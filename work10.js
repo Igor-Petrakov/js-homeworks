@@ -16,29 +16,13 @@ var arr = [
     }
 ];
 
+var regex = /^[a-z0-9]+(\.[a-z0-9]+)?@(gmail\.com|yahoo\.com)$/;
+
 var validEmails = [];
 
 for (let i = 0; i < arr.length; i++) {
-    let email = arr[i].email;
-
-    if (email.includes("@")) {
-
-        let parts = email.split("@");
-
-        if (parts.length === 2) {
-
-            let name = parts[0];   
-            let domain = parts[1]; 
-
-            if (domain === "gmail.com" || domain === "yahoo.com") {
-
-                let nameParts = name.split(".");
-
-                if (nameParts.length === 1 || nameParts.length === 2) {
-                    validEmails.push(email);
-                }
-            }
-        }
+    if (regex.test(arr[i].email)) {
+        validEmails.push(arr[i].email);
     }
 }
 
